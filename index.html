@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerPath AI — Intelligent Career System</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="scanline"></div>
+<canvas id="particleCanvas"></canvas>
+
+<header id="mainHeader">
+  <div class="header-left">
+    <div class="logo-wrap">
+      <span class="logo-bracket">[</span>
+      <a href="index.html" class="logo">CareerPath<span class="logo-accent">AI</span></a>
+      <span class="logo-bracket">]</span>
+    </div>
+    <span class="system-status">● SYSTEM ONLINE</span>
+  </div>
+  <nav id="navbar">
+    <a href="#home" class="nav-link">HOME</a>
+    <a href="#features" class="nav-link">FEATURES</a>
+    <a href="#domains" class="nav-link">DOMAINS</a>
+    <span id="userEmailDisplay"></span>
+    <a href="login.html" id="loginBtn" class="nav-link">LOGIN</a>
+    <a href="register.html" class="nav-btn" id="registerBtn">REGISTER</a>
+    <a href="#" id="logoutBtn" class="nav-link" style="display:none;">LOGOUT</a>
+  </nav>
+  <div class="hamburger" id="hamburger">&#9776;</div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="terminal-tag">&gt; INITIALIZING CAREER INTELLIGENCE SYSTEM_</div>
+    <h1 class="hero-title"><span id="typeLine">BUILD YOUR TECH FUTURE</span><span class="cursor-blink">|</span></h1>
+    <p class="hero-sub">Industry-level roadmaps. Smart skill progression. AI-guided paths.<br>From zero to job-ready — with precision.</p>
+    <div class="hero-actions">
+      <button id="exploreBtn" class="btn-primary">⬡ EXPLORE DOMAINS</button>
+      <a href="register.html" class="btn-ghost">GET STARTED FREE →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">14</span><span class="stat-label">Domains</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Skills</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num">70+</span><span class="stat-label">YT Channels</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="terminal-window">
+      <div class="terminal-bar">
+        <span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span>
+        <span class="t-title">careerpath-ai ~ v2.0</span>
+      </div>
+      <div class="terminal-body">
+        <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">analyze --domain fullstack</span></div>
+        <div class="t-line t-out">✔ Domain: Full Stack Development</div>
+        <div class="t-line t-out">✔ Skills mapped: 68 topics</div>
+        <div class="t-line t-out">✔ Dependencies: resolved</div>
+        <div class="t-line t-out">✔ YouTube: 5 channels linked</div>
+        <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">track --progress</span></div>
+        <div class="t-line t-success">▶ Mastery: 34% ████████░░░░░░░░░░░░</div>
+        <div class="t-line t-success">▶ Streak: 7 days 🔥</div>
+        <div class="t-line t-success">▶ Next: "React.js" [3 days est.]</div>
+        <div class="t-line"><span class="t-prompt">$</span> <span class="t-cursor-blink">_</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="section-header">
+    <span class="section-tag">// SYSTEM FEATURES</span>
+    <h2 class="section-title">WHY CAREERPATH AI?</h2>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card reveal"><div class="fc-icon">⬡</div><h3>Industry Roadmaps</h3><p>Real skills that hiring managers test. Every topic mapped to actual 2026 job requirements.</p></div>
+    <div class="feature-card reveal"><div class="fc-icon">◈</div><h3>Skill Dependencies</h3><p>Prerequisites shown clearly. Learn in the right order — never confused or stuck mid-path.</p></div>
+    <div class="feature-card reveal"><div class="fc-icon">◉</div><h3>Smart Progress</h3><p>Streaks, mastery %, level badges. Your entire learning journey tracked intelligently.</p></div>
+    <div class="feature-card reveal"><div class="fc-icon">⬢</div><h3>Personalized Paths</h3><p>Set your daily time and goal. Get a roadmap built around YOUR schedule, not a template.</p></div>
+    <div class="feature-card reveal"><div class="fc-icon">◎</div><h3>YouTube Intelligence</h3><p>Curated top channels per skill level. Not random links — best content for where you are.</p></div>
+    <div class="feature-card reveal"><div class="fc-icon">⬟</div><h3>Resume Skills</h3><p>Filter for job-ready, project-worthy capabilities. Know exactly what to put on your CV.</p></div>
+  </div>
+</section>
+
+<section class="domains" id="domains">
+  <div class="section-header">
+    <span class="section-tag">// SELECT DOMAIN</span>
+    <h2 class="section-title">CHOOSE YOUR PATH</h2>
+    <p class="section-sub">Each domain is a complete career intelligence system</p>
+  </div>
+  <div class="domain-grid">
+    <div class="domain-card reveal" onclick="selectDomain('fullstack')"><div class="dc-glow"></div><div class="dc-icon">⬡</div><div class="dc-body"><h3>Full Stack</h3><span class="dc-tag">68 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('datascience')"><div class="dc-glow"></div><div class="dc-icon">◈</div><div class="dc-body"><h3>Data Science</h3><span class="dc-tag">52 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('cybersecurity')"><div class="dc-glow"></div><div class="dc-icon">◉</div><div class="dc-body"><h3>Cyber Security</h3><span class="dc-tag">44 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('ai')"><div class="dc-glow"></div><div class="dc-icon">⬢</div><div class="dc-body"><h3>Artificial Intelligence</h3><span class="dc-tag">48 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('ml')"><div class="dc-glow"></div><div class="dc-icon">◎</div><div class="dc-body"><h3>Machine Learning</h3><span class="dc-tag">46 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('deeplearning')"><div class="dc-glow"></div><div class="dc-icon">⬟</div><div class="dc-body"><h3>Deep Learning</h3><span class="dc-tag">38 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('cloud')"><div class="dc-glow"></div><div class="dc-icon">⬡</div><div class="dc-body"><h3>Cloud Computing</h3><span class="dc-tag">42 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('devops')"><div class="dc-glow"></div><div class="dc-icon">◈</div><div class="dc-body"><h3>DevOps</h3><span class="dc-tag">36 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('android')"><div class="dc-glow"></div><div class="dc-icon">◉</div><div class="dc-body"><h3>Android Dev</h3><span class="dc-tag">40 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('webdevelopment')"><div class="dc-glow"></div><div class="dc-icon">⬢</div><div class="dc-body"><h3>Web Development</h3><span class="dc-tag">50 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('softwareengineering')"><div class="dc-glow"></div><div class="dc-icon">◎</div><div class="dc-body"><h3>Software Engineering</h3><span class="dc-tag">45 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('blockchain')"><div class="dc-glow"></div><div class="dc-icon">⬟</div><div class="dc-body"><h3>Blockchain</h3><span class="dc-tag">30 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('gamedev')"><div class="dc-glow"></div><div class="dc-icon">⬡</div><div class="dc-body"><h3>Game Development</h3><span class="dc-tag">38 skills</span></div><div class="dc-arrow">→</div></div>
+    <div class="domain-card reveal" onclick="selectDomain('uiux')"><div class="dc-glow"></div><div class="dc-icon">◈</div><div class="dc-body"><h3>UI/UX Design</h3><span class="dc-tag">32 skills</span></div><div class="dc-arrow">→</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="logo-wrap"><span class="logo-bracket">[</span><span class="logo">CareerPath<span class="logo-accent">AI</span></span><span class="logo-bracket">]</span></div>
+    <p>© 2026 CareerPath AI — Domain Based Career Roadmap Intelligence System</p>
+    <p class="footer-sub">Built for students serious about tech careers.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function(){
+  const canvas=document.getElementById('particleCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  const pts=Array.from({length:70},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2+0.3,dx:(Math.random()-.5)*.35,dy:(Math.random()-.5)*.35,o:Math.random()*.4+.08}));
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pts.forEach(p=>{
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(0,240,255,${p.o})`;ctx.fill();
+      p.x+=p.dx;p.y+=p.dy;
+      if(p.x<0||p.x>canvas.width)p.dx*=-1;
+      if(p.y<0||p.y>canvas.height)p.dy*=-1;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+(function(){
+  const phrases=["BUILD YOUR TECH FUTURE","BECOME JOB-READY TODAY","MASTER YOUR DOMAIN","LAUNCH YOUR CAREER"];
+  let pi=0,ci=0,deleting=false;
+  function tick(){
+    const el=document.getElementById('typeLine');if(!el)return;
+    const phrase=phrases[pi];
+    if(!deleting){el.textContent=phrase.substring(0,ci+1);ci++;if(ci===phrase.length){deleting=true;setTimeout(tick,2000);return;}}
+    else{el.textContent=phrase.substring(0,ci-1);ci--;if(ci===0){deleting=false;pi=(pi+1)%phrases.length;}}
+    setTimeout(tick,deleting?35:85);
+  }
+  tick();
+})();
+
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('navbar').classList.toggle('open');
+});
+</script>
+</body>
+</html>

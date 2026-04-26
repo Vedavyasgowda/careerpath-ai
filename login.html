@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — CareerPath AI</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="scanline"></div>
+
+<header id="mainHeader">
+  <div class="header-left">
+    <div class="logo-wrap">
+      <span class="logo-bracket">[</span>
+      <a href="index.html" class="logo">CareerPath<span class="logo-accent">AI</span></a>
+      <span class="logo-bracket">]</span>
+    </div>
+  </div>
+</header>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="auth-icon-ring">🔐</div>
+      <div class="auth-tag">// SECURE LOGIN</div>
+      <h2>Welcome Back</h2>
+      <p class="auth-subtitle">Access your career intelligence dashboard</p>
+    </div>
+    <form id="loginForm" autocomplete="off">
+      <div class="input-group">
+        <label class="input-label">EMAIL ADDRESS</label>
+        <div class="input-wrap">
+          <span class="input-icon">@</span>
+          <input type="email" id="loginEmail" placeholder="you@example.com" required>
+        </div>
+      </div>
+      <div class="input-group">
+        <label class="input-label">PASSWORD</label>
+        <div class="input-wrap">
+          <span class="input-icon">⬡</span>
+          <input type="password" id="loginPassword" placeholder="••••••••" required>
+          <span class="toggle-pass" onclick="togglePass('loginPassword',this)">👁</span>
+        </div>
+      </div>
+      <button type="submit" class="auth-btn">
+        <span class="auth-btn-text">AUTHENTICATE</span>
+        <span class="auth-btn-arrow">→</span>
+      </button>
+      <p class="auth-link">No account? <a href="register.html">Register here</a></p>
+    </form>
+  </div>
+</div>
+
+<script>
+if(localStorage.getItem("loggedIn")==="true") window.location.href="index.html";
+function togglePass(id,el){const i=document.getElementById(id);i.type=i.type==="password"?"text":"password";el.textContent=i.type==="password"?"👁":"🙈";}
+</script>
+<script src="script.js"></script>
+</body>
+</html>

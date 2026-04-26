@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap — CareerPath AI</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+<div class="scanline"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <span class="logo-bracket">[</span><span class="logo">Career<span class="logo-accent">AI</span></span><span class="logo-bracket">]</span>
+  </div>
+  <div class="sidebar-domain" id="sidebarDomain">LOADING...</div>
+
+  <!-- PROGRESS RINGS -->
+  <div class="rings-wrap">
+    <div class="ring-item">
+      <svg class="ring-svg" viewBox="0 0 60 60">
+        <circle class="ring-bg" cx="30" cy="30" r="24"/>
+        <circle class="ring-fill beginner-ring" id="ringBeg" cx="30" cy="30" r="24" stroke-dasharray="0 150.8"/>
+      </svg>
+      <span class="ring-label">BEG</span>
+      <span class="ring-pct" id="pctBeg">0%</span>
+    </div>
+    <div class="ring-item">
+      <svg class="ring-svg" viewBox="0 0 60 60">
+        <circle class="ring-bg" cx="30" cy="30" r="24"/>
+        <circle class="ring-fill inter-ring" id="ringInt" cx="30" cy="30" r="24" stroke-dasharray="0 150.8"/>
+      </svg>
+      <span class="ring-label">INT</span>
+      <span class="ring-pct" id="pctInt">0%</span>
+    </div>
+    <div class="ring-item">
+      <svg class="ring-svg" viewBox="0 0 60 60">
+        <circle class="ring-bg" cx="30" cy="30" r="24"/>
+        <circle class="ring-fill adv-ring" id="ringAdv" cx="30" cy="30" r="24" stroke-dasharray="0 150.8"/>
+      </svg>
+      <span class="ring-label">ADV</span>
+      <span class="ring-pct" id="pctAdv">0%</span>
+    </div>
+  </div>
+
+  <!-- OVERALL MASTERY -->
+  <div class="mastery-bar-wrap">
+    <div class="mastery-label">DOMAIN MASTERY</div>
+    <div class="mastery-track"><div class="mastery-fill" id="masteryFill"></div></div>
+    <div class="mastery-pct" id="masteryPct">0%</div>
+  </div>
+
+  <!-- STREAK -->
+  <div class="streak-box">
+    <span class="streak-fire">🔥</span>
+    <div>
+      <div class="streak-num" id="streakNum">0</div>
+      <div class="streak-label">DAY STREAK</div>
+    </div>
+  </div>
+
+  <!-- DAILY GOAL -->
+  <div class="daily-goal-box">
+    <div class="goal-label">DAILY GOAL</div>
+    <div class="goal-progress"><div class="goal-fill" id="goalFill"></div></div>
+    <div class="goal-text" id="goalText">0/3 skills today</div>
+  </div>
+
+  <!-- SIDEBAR NAV -->
+  <div class="sidebar-nav">
+    <a href="index.html" class="sb-link">⬅ Back to Domains</a>
+    <a href="#ytSection" class="sb-link">📺 YT Channels</a>
+    <a href="#resumeSection" class="sb-link">📄 Resume Skills</a>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="dash-main">
+  <!-- TOP BAR -->
+  <div class="dash-topbar">
+    <div class="topbar-left">
+      <button class="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('sidebar-open')">☰</button>
+      <h1 class="domain-title" id="domainTitle">LOADING ROADMAP...</h1>
+    </div>
+    <div class="topbar-right">
+      <span class="user-badge" id="userBadge">👤 USER</span>
+    </div>
+  </div>
+
+  <!-- PERSONALIZATION BAR -->
+  <div class="personalize-bar" id="personalizeBar">
+    <div class="pb-tag">⚙ PERSONALIZE PATH</div>
+    <select id="timeSelect" class="pb-select">
+      <option value="1">1 hr/day</option>
+      <option value="2" selected>2 hrs/day</option>
+      <option value="4">4 hrs/day</option>
+      <option value="8">8 hrs/day</option>
+    </select>
+    <select id="goalSelect" class="pb-select">
+      <option value="job">Job Ready</option>
+      <option value="internship">Internship</option>
+      <option value="skills">Build Skills</option>
+      <option value="project">Project Heavy</option>
+    </select>
+    <button class="pb-btn" onclick="applyPersonalization()">APPLY PATH</button>
+    <span class="pb-estimate" id="pbEstimate"></span>
+  </div>
+
+  <!-- LEVEL TABS -->
+  <div class="level-tabs">
+    <button class="level-tab active" id="tabBeg" onclick="switchLevel('beginner',this)">🌱 BEGINNER</button>
+    <button class="level-tab" id="tabInt" onclick="switchLevel('intermediate',this)">⚡ INTERMEDIATE</button>
+    <button class="level-tab" id="tabAdv" onclick="switchLevel('advanced',this)">🚀 ADVANCED</button>
+  </div>
+
+  <!-- SEARCH + FILTER BAR -->
+  <div class="search-filter-bar">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search skills..." oninput="filterSkills()">
+    </div>
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="setFilter('all',this)">ALL</button>
+      <button class="filter-btn" onclick="setFilter('resume',this)">📄 RESUME</button>
+      <button class="filter-btn" onclick="setFilter('bookmark',this)">🔖 BOOKMARKED</button>
+      <button class="filter-btn" onclick="setFilter('incomplete',this)">⏳ INCOMPLETE</button>
+      <button class="filter-btn" onclick="setFilter('done',this)">✅ DONE</button>
+    </div>
+  </div>
+
+  <!-- TERMINAL LOG -->
+  <div class="terminal-log" id="terminalLog">
+    <span class="tl-prompt">$</span> <span class="tl-msg" id="tlMsg">system ready — select a skill to begin</span>
+  </div>
+
+  <!-- SKILL CARDS CONTAINER -->
+  <div class="skill-grid" id="skillGrid"></div>
+
+  <!-- YOUTUBE SECTION -->
+  <section class="yt-section" id="ytSection">
+    <div class="section-header">
+      <span class="section-tag">// YOUTUBE INTELLIGENCE</span>
+      <h2 class="section-title">RECOMMENDED CHANNELS</h2>
+      <p class="section-sub">Top creators curated for this domain</p>
+    </div>
+    <div class="yt-grid" id="ytGrid"></div>
+  </section>
+
+  <!-- RESUME SKILLS SECTION -->
+  <section class="resume-section" id="resumeSection">
+    <div class="section-header">
+      <span class="section-tag">// RESUME INTELLIGENCE</span>
+      <h2 class="section-title">RESUME-READY SKILLS</h2>
+      <p class="section-sub">Skills that impress hiring managers — mark them complete first</p>
+    </div>
+    <div class="resume-grid" id="resumeGrid"></div>
+  </section>
+
+</main>
+
+<script src="roadmap.js"></script>
+</body>
+</html>
